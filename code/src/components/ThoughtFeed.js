@@ -20,7 +20,7 @@ export const ThoughtFeed = () => {
   }, []);
 
   const HandleLike = (thoughtId) => {
-    fetch(`${API}/${thoughtId}/like`, { method: 'POST' })
+    fetch(`${API}/${thoughtId}/like`, { method: 'PATCH' })
       .then((res) => res.json())
       .then((data) => {
         const UpdateHearts = thoughtsList.map((like) => {
