@@ -4,7 +4,7 @@ import { formatDistance } from 'date-fns';
 import Spinning from './Spinning';
 // import { Loading } from './Loading'
 
-const API = 'https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts'
+const API = 'https://project-happy-thoughts-api-5u3xa3b6hq-lz.a.run.app/thoughts'
 
 export const ThoughtFeed = () => {
   const [thoughtsList, setThoughtsList] = useState([]);
