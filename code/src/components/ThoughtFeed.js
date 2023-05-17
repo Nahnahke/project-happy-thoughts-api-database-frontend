@@ -23,18 +23,15 @@ export const ThoughtFeed = () => {
     fetch(`${API}/${thoughtId}/like`, { method: 'PATCH' })
       .then((res) => res.json())
       .then((data) => {
-        setThoughtsList((prevThoughtsList) => {
-          return prevThoughtsList.map((like) => {
-            if (like._id === data._id) {
-              return { ...like, hearts: like.hearts + 1 };
-            } else {
-              return like;
-            }
-          });
-        });
-      });
+        const UpdateHearts = thoughtsList.map((like) => {
+          if (like._id === data._id) {
+            like.hearts += 1
+            return like
+          } else { return like }
+        })
+        setThoughtsList(UpdateHearts)
+      })
   };
-  
 
   return (
     <>
