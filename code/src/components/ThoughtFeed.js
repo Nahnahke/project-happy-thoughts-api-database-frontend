@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { formatDistance } from 'date-fns';
 import Spinning from './Spinning';
-// import { Loading } from './Loading'
 
 const API = 'https://project-happy-thoughts-api-5u3xa3b6hq-lz.a.run.app/thoughts'
 

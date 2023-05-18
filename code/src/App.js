@@ -5,12 +5,8 @@ import { NewThought } from 'components/NewThought';
 export const App = () => {
   return (
     <>
-      <section>
-        <NewThought />
-      </section>
-      <section>
-        <ThoughtFeed />
-      </section>
+      <NewThought />
+      <ThoughtFeed />
     </>
   )
 }
