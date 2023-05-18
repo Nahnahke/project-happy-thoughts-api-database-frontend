@@ -14,23 +14,30 @@ export const ThoughtFeed = () => {
     setLoading(true);
     fetch(`${API}`)
       .then((res) => res.json())
-      .then((data) => setThoughtsList(data))
+      .then((data) => {
+        console.log(data);
+        setThoughtsList(data);
+      })
       .catch((error) => console.log(error))
-      .finally(() => { setLoading(false) })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
-  const HandleLike = (thoughtId) => {
-    fetch(`${API}/${thoughtId}/like`, { method: 'PATCH' })
+  const HandleLike = (_id) => {
+    fetch(`${API}/${_id}/like`, { method: 'PATCH' })
       .then((res) => res.json())
       .then((data) => {
-        const UpdateHearts = thoughtsList.map((like) => {
-          if (like._id === data._id) {
-            like.hearts += 1
-            return like
-          } else { return like }
-        })
-        setThoughtsList(UpdateHearts)
-      })
+        const updatedThoughts = thoughtsList.map((thought) => {
+          if (thought._id === data.response._id) {
+            thought.heart += 1;
+            return thought;
+          } else {
+            return thought;
+          }
+        });
+        setThoughtsList(updatedThoughts);
+      });
   };
 
   return (
@@ -40,10 +47,10 @@ export const ThoughtFeed = () => {
           return (
             <div key={thought._id} className="card">
               <p className="post-text">{thought.message}</p>
-              <button type="button" className={thought.hearts === 0 ? 'noLikesBtn' : 'likesBtn'} onClick={() => HandleLike(thought._id)}>
+              <button type="button" className={thought.heart === 0 ? 'noLikesBtn' : 'likesBtn'} onClick={() => HandleLike(thought._id)}>
                 <span role="img" aria-label="Like this post">💗</span>
               </button>
-              <span className="sum-hearts">x {thought.hearts}</span>
+              <span className="sum-hearts">x {thought.heart}</span>
               <p className="date"> {formatDistance(new Date(thought.createdAt), Date.now(), { addSuffix: true })}</p>
             </div>
           )
