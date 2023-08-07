@@ -41,3 +41,6 @@ If I had more time, I would add more functionality like pagination.
 JavaScript React CSS HTML Figma MongoDB Node.js Postman Google Cloud
 
 View it live https://project-happy-thoughts-frontend.netlify.app/
+
+
+View the backend code: https://github.com/Nahnahke/project-happy-thoughts-api
